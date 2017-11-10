@@ -19,7 +19,7 @@
     NSString  *_downLoadingPath;
     NSString  *_downLoadedPath;
     NSTimeInterval _speedTime; //记录上一次的时间
-    int64_t lastReceivedBytes;
+    int64_t _lastReceivedBytes;
 }
 
 @property (nonatomic ,strong) NSURLSession *session ;
@@ -45,7 +45,7 @@
     [self downLoadFileWith:url offSet:_receivedBytes];
     //
     _speedTime = [[NSDate date] timeIntervalSince1970] ;
-    lastReceivedBytes = 0;
+    _lastReceivedBytes = 0;
 }
 
 - (void)downLoadFileWith:(NSURL *)url offSet:(unsigned long long)offset {
@@ -180,8 +180,12 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
 - (void)calcuteLoadSpeed:(int64_t)totalBytesWritten {
     NSTimeInterval nowDate = [[NSDate date] timeIntervalSince1970];
     if (nowDate - _speedTime > 1.0) {
-        int64_t middleBytes = totalBytesWritten - lastReceivedBytes;
-        double speed_KB = middleBytes/(nowDate - _speedTime) / 1024;
+        int64_t middleBytes = totalBytesWritten - _lastReceivedBytes;
+        double timeInterval = (nowDate - _speedTime);
+        if (timeInterval <= 0.0) {//防止除数为0
+            timeInterval = 1.0;
+        }
+        double speed_KB = middleBytes/timeInterval / 1024;
         double speed_MB = speed_KB / 1024.0;
         double speed_GB = speed_MB / 1024.0;
         double speed = speed_KB;
@@ -197,7 +201,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
             self.speed([NSString stringWithFormat:@"%.2f%@",speed,speed_Unit]);
         }
         _speedTime = nowDate;
-        lastReceivedBytes = totalBytesWritten;
+        _lastReceivedBytes = totalBytesWritten;
     }
 }
 @end
