@@ -10,18 +10,27 @@
 
 #import "ViewController.h"
 #import "DownLoader.h"
-
+#import <DALabeledCircularProgressView.h>
 @interface ViewController ()
+
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property (weak, nonatomic) IBOutlet UILabel *percentLabel;
+@property (weak, nonatomic) IBOutlet DALabeledCircularProgressView *labeledCircleProgressView;
 @property (nonatomic ,strong) DownLoader *loader;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.labeledCircleProgressView.thicknessRatio = 0.3;
+    self.labeledCircleProgressView.progressLabel.backgroundColor = [UIColor clearColor];
+    self.labeledCircleProgressView.progressLabel.textColor = [UIColor blueColor];
+    self.labeledCircleProgressView.progress = 0.3;
+    self.labeledCircleProgressView.progressTintColor = [UIColor redColor];
+    self.labeledCircleProgressView.trackTintColor = [UIColor purpleColor];
+    self.labeledCircleProgressView.thicknessRatio = 1;
 }
 
 - (IBAction)start:(id)sender {
@@ -30,11 +39,15 @@
     self.loader = downLoad;
     [downLoad setLoadProgress:^(float progress) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.progressView.progress = progress;
+            [self.progressView setProgress:progress animated:true];
+//            self.labeledCircleProgressView.progressLabel.text =
             self.percentLabel.text = [NSString stringWithFormat:@"%.2f%%",progress * 100];
+             //
+            [self.labeledCircleProgressView setProgress:progress animated:true];
         });
     }];
-    [downLoad downLoadWithURL:[NSURL URLWithString:@"http://m8.music.126.net/20171109183252/a7e37a44b00e2c6314657c927a1a29cf/ymusic/1cd1/461f/08f9/a16b3a55120adac00ae7a6e15f955f62.mp3"]];
+    //http://p3.music.126.net/nJROWeZiEp1TUv27amRguQ==/18195817928618786.jpg?param=640y640&quality=100
+    [downLoad downLoadWithURL:[NSURL URLWithString:@"http://m8.music.126.net/20171110114131/4fe5e30d2d7f176d2398cc76a5c3bdfc/ymusic/664f/130f/169f/ef97f4671de0dd8c0cef0cd87748b767.mp3"]];
 }
 - (IBAction)resume:(id)sender {
     [self.loader resume];

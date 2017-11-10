@@ -1,0 +1,12 @@
+PODS:
+  - DACircularProgress (2.3.1)
+
+DEPENDENCIES:
+  - DACircularProgress
+
+SPEC CHECKSUMS:
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+
+PODFILE CHECKSUM: d9f00595073be932e50e78024e59a52b8f2c8edb
+
+COCOAPODS: 1.2.1
