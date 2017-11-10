@@ -18,12 +18,14 @@
     long long _receivedBytes;
     NSString  *_downLoadingPath;
     NSString  *_downLoadedPath;
+    NSTimeInterval _speedTime; //记录上一次的时间
+    int64_t lastReceivedBytes;
 }
 
 @property (nonatomic ,strong) NSURLSession *session ;
 @property (nonatomic ,strong) NSOutputStream *outStream;
-
 @property (nonatomic ,weak) NSURLSessionTask *task;
+
 @end
 
 @implementation DownLoader
@@ -41,6 +43,9 @@
     //2.下载
     _receivedBytes = [FileTool getFileSize:_downLoadingPath];
     [self downLoadFileWith:url offSet:_receivedBytes];
+    //
+    _speedTime = [[NSDate date] timeIntervalSince1970] ;
+    lastReceivedBytes = 0;
 }
 
 - (void)downLoadFileWith:(NSURL *)url offSet:(unsigned long long)offset {
@@ -83,7 +88,7 @@ didReceiveResponse:(NSURLResponse *)response
     self.outStream = [NSOutputStream outputStreamToFileAtPath:_downLoadingPath append:YES];
     [self.outStream open];
     completionHandler(NSURLSessionResponseAllow);
-    //
+
 }
 
 /**
@@ -132,17 +137,22 @@ didFinishDownloadingToURL:(NSURL *)downloadURL {
         NSLog(@"移动失败");
     }
 }
+
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
       didWriteData:(int64_t)bytesWritten
  totalBytesWritten:(int64_t)totalBytesWritten
 totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
-    //下载过程不断回调
+
+   //1. 计算下载速度
+    [self calcuteLoadSpeed:totalBytesWritten];
+   //2. 下载进度条
     float progress = totalBytesWritten * 1.0 / totalBytesExpectedToWrite;
-    NSLog(@"当前进度%f%%",progress);
     if (self.loadProgress) {
         self.loadProgress(progress);
     }
 }
+
+
 #pragma mark - lazy Load
 - (NSURLSession *)session {
     if (!_session) {
@@ -164,5 +174,30 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
 
 - (void)resume {
     [self.task resume];
+}
+
+#pragma mark - private method
+- (void)calcuteLoadSpeed:(int64_t)totalBytesWritten {
+    NSTimeInterval nowDate = [[NSDate date] timeIntervalSince1970];
+    if (nowDate - _speedTime > 1.0) {
+        int64_t middleBytes = totalBytesWritten - lastReceivedBytes;
+        double speed_KB = middleBytes/(nowDate - _speedTime) / 1024;
+        double speed_MB = speed_KB / 1024.0;
+        double speed_GB = speed_MB / 1024.0;
+        double speed = speed_KB;
+        NSString *speed_Unit = @"KB/S";
+        if (speed_GB > 1.0) {
+            speed_Unit = @"GB/S";
+            speed = speed_GB;
+        }else if (speed_MB > 1.0) {
+            speed_Unit = @"MB/S";
+            speed = speed_MB;
+        }
+        if (self.speed) {
+            self.speed([NSString stringWithFormat:@"%.2f%@",speed,speed_Unit]);
+        }
+        _speedTime = nowDate;
+        lastReceivedBytes = totalBytesWritten;
+    }
 }
 @end

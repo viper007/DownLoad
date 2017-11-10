@@ -40,14 +40,16 @@
     [downLoad setLoadProgress:^(float progress) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.progressView setProgress:progress animated:true];
-//            self.labeledCircleProgressView.progressLabel.text =
-            self.percentLabel.text = [NSString stringWithFormat:@"%.2f%%",progress * 100];
              //
             [self.labeledCircleProgressView setProgress:progress animated:true];
         });
     }];
-    //http://p3.music.126.net/nJROWeZiEp1TUv27amRguQ==/18195817928618786.jpg?param=640y640&quality=100
-    [downLoad downLoadWithURL:[NSURL URLWithString:@"http://m7.music.126.net/20171110121419/4c165223e9105f29041e878169fdb9ef/ymusic/664f/130f/169f/ef97f4671de0dd8c0cef0cd87748b767.mp3"]];
+    [downLoad setSpeed:^(NSString *speed) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.percentLabel.text = speed;
+        });
+    }];
+    [downLoad downLoadWithURL:[NSURL URLWithString:@"http://m7.music.126.net/20171110154630/be316fa526a5693b3539a5b0a528766c/ymusic/915c/bd30/a1ec/3645548e2e280813814f401b5d543d8c.mp3"]];
 }
 - (IBAction)resume:(id)sender {
     [self.loader resume];
