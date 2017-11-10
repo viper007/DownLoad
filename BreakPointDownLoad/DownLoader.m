@@ -123,13 +123,12 @@ didFinishDownloadingToURL:(NSURL *)downloadURL {
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     NSArray *URLs = [fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask];
-    NSURL *documentsDirectory = [URLs objectAtIndex:0];
+    NSURL *cacheDirectory = [URLs objectAtIndex:0];
 
     NSURL *originalURL = [[downloadTask originalRequest] URL];
-    NSURL *destinationURL = [documentsDirectory URLByAppendingPathComponent:[originalURL lastPathComponent]];
+    NSURL *destinationURL = [cacheDirectory URLByAppendingPathComponent:[originalURL lastPathComponent]];
     NSError *errorCopy;
-
-    [fileManager removeItemAtURL:destinationURL error:NULL];
+    [fileManager removeItemAtURL:destinationURL error:NULL];//这个是判断原理的文件里面是否有对应的这个文件
     BOOL success = [fileManager copyItemAtURL:downloadURL toURL:destinationURL error:&errorCopy];
     if (success) {
         NSLog(@"移动成功");
@@ -181,13 +180,16 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
     NSTimeInterval nowDate = [[NSDate date] timeIntervalSince1970];
     if (nowDate - _speedTime > 1.0) {
         int64_t middleBytes = totalBytesWritten - _lastReceivedBytes;
+
         double timeInterval = (nowDate - _speedTime);
         if (timeInterval <= 0.0) {//防止除数为0
             timeInterval = 1.0;
         }
+
         double speed_KB = middleBytes/timeInterval / 1024;
         double speed_MB = speed_KB / 1024.0;
         double speed_GB = speed_MB / 1024.0;
+
         double speed = speed_KB;
         NSString *speed_Unit = @"KB/S";
         if (speed_GB > 1.0) {
@@ -200,6 +202,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
         if (self.speed) {
             self.speed([NSString stringWithFormat:@"%.2f%@",speed,speed_Unit]);
         }
+
         _speedTime = nowDate;
         _lastReceivedBytes = totalBytesWritten;
     }

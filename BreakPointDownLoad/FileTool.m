@@ -29,4 +29,11 @@
     if (![self fileExists:filePath]) return YES;
     return [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
 }
+
++ (BOOL)createDirection:(NSString *)directPath {
+    BOOL isExisted = [self fileExists:directPath];
+    if (isExisted) return YES;
+    //创建文件夹
+    return [[NSFileManager defaultManager] createDirectoryAtPath:directPath withIntermediateDirectories:YES attributes:NULL error:NULL];
+}
 @end

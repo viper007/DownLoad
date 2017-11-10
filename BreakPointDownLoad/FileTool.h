@@ -17,4 +17,6 @@
 + (BOOL)moveFile:(NSString *)fromPath toPath:(NSString *)toPath ;
 
 + (BOOL)removeFile:(NSString *)filePath ;
+
++ (BOOL)createDirection:(NSString *)directPath;
 @end

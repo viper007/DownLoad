@@ -27,10 +27,10 @@
     self.labeledCircleProgressView.thicknessRatio = 0.3;
     self.labeledCircleProgressView.progressLabel.backgroundColor = [UIColor clearColor];
     self.labeledCircleProgressView.progressLabel.textColor = [UIColor blueColor];
-    self.labeledCircleProgressView.progress = 0.3;
-    self.labeledCircleProgressView.progressTintColor = [UIColor redColor];
-    self.labeledCircleProgressView.trackTintColor = [UIColor purpleColor];
-    self.labeledCircleProgressView.thicknessRatio = 1;
+    self.labeledCircleProgressView.progressTintColor = [UIColor redColor];//进度条的颜色
+    self.labeledCircleProgressView.trackTintColor = [UIColor purpleColor];//类似于背景颜色
+    self.labeledCircleProgressView.innerTintColor = [UIColor yellowColor];
+    self.labeledCircleProgressView.thicknessRatio = 1;//这个是显示对应的中间的是否镂空[0-1]
 }
 
 - (IBAction)start:(id)sender {
