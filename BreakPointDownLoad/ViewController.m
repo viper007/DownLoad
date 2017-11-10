@@ -47,7 +47,7 @@
         });
     }];
     //http://p3.music.126.net/nJROWeZiEp1TUv27amRguQ==/18195817928618786.jpg?param=640y640&quality=100
-    [downLoad downLoadWithURL:[NSURL URLWithString:@"http://m8.music.126.net/20171110114131/4fe5e30d2d7f176d2398cc76a5c3bdfc/ymusic/664f/130f/169f/ef97f4671de0dd8c0cef0cd87748b767.mp3"]];
+    [downLoad downLoadWithURL:[NSURL URLWithString:@"http://m7.music.126.net/20171110121419/4c165223e9105f29041e878169fdb9ef/ymusic/664f/130f/169f/ef97f4671de0dd8c0cef0cd87748b767.mp3"]];
 }
 - (IBAction)resume:(id)sender {
     [self.loader resume];

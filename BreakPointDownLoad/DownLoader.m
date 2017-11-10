@@ -154,6 +154,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
 
 - (void)cancel {
     [self.session invalidateAndCancel];
+    self.session = nil;
 }
 
 - (void)pause {

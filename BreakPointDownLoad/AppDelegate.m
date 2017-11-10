@@ -31,18 +31,18 @@
     _bgTask = [application beginBackgroundTaskWithExpirationHandler:^{
         dispatch_async(dispatch_get_main_queue(), ^{
             if (_bgTask != UIBackgroundTaskInvalid) {
+                [application endBackgroundTask:_bgTask];
                 _bgTask = UIBackgroundTaskInvalid;
             }
         });
-
-   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
            if (_bgTask != UIBackgroundTaskInvalid) {
+               [application endBackgroundTask:_bgTask];
                _bgTask = UIBackgroundTaskInvalid;
            }
         });
     }];
 }
-
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
 
