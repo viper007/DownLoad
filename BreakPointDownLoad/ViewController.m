@@ -11,7 +11,8 @@
 #import "ViewController.h"
 #import "DownLoader.h"
 #import <DALabeledCircularProgressView.h>
-@interface ViewController ()
+#import "MYCircleBar.h"
+@interface ViewController () <MYCircleBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property (weak, nonatomic) IBOutlet UILabel *percentLabel;
@@ -31,6 +32,11 @@
     self.labeledCircleProgressView.trackTintColor = [UIColor purpleColor];//类似于背景颜色
     self.labeledCircleProgressView.innerTintColor = [UIColor yellowColor];
     self.labeledCircleProgressView.thicknessRatio = 1;//这个是显示对应的中间的是否镂空[0-1]
+
+    MYCircleBar *circleBar = [MYCircleBar cireleBarframe:CGRectMake(30,300, self.view.frame.size.width - 60, 44) NarmalColor:[UIColor blackColor] disableColor:[UIColor yellowColor] titles:@[@"开始",@"暂停",@"继续"]];
+    circleBar.delegate = self;
+    circleBar.backgroundColor = [UIColor redColor];
+    [self.view addSubview:circleBar];
 }
 
 - (IBAction)start:(id)sender {
@@ -57,4 +63,21 @@
 - (IBAction)pause:(id)sender {
     [self.loader pause];
 }
+
+- (void)clickCircleBarAtIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+            [self start:nil];
+            break;
+        case 1:
+            [self pause:nil];
+            break;
+        case 2:
+            [self resume:nil];
+            break;
+        default:
+            break;
+    }
+}
+
 @end

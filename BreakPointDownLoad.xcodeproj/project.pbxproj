@@ -6,6 +6,20 @@
 	objectVersion = 48;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		F66D36B81FB99A750000D744 /* Regex_appledoc */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = F66D36BB1FB99A750000D744 /* Build configuration list for PBXAggregateTarget "Regex_appledoc" */;
+			buildPhases = (
+				F66D36BC1FB99A8E0000D744 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Regex_appledoc;
+			productName = Regex_appledoc;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		A7B2F6B49E0289E0B2C58531 /* libPods-BreakPointDownLoad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E35EF45DCC4C1710EE4EDD2 /* libPods-BreakPointDownLoad.a */; };
 		F610BD4E1FB2EC7600265E3B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F610BD4D1FB2EC7600265E3B /* AppDelegate.m */; };
@@ -14,8 +28,9 @@
 		F610BD561FB2EC7600265E3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F610BD551FB2EC7600265E3B /* Assets.xcassets */; };
 		F610BD591FB2EC7600265E3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F610BD571FB2EC7600265E3B /* LaunchScreen.storyboard */; };
 		F610BD5C1FB2EC7600265E3B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F610BD5B1FB2EC7600265E3B /* main.m */; };
-		F6F2A3CB1FB3F3FA000FFF0B /* FileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F2A3CA1FB3F3FA000FFF0B /* FileTool.m */; };
-		F6F2A3CE1FB4382D000FFF0B /* DownLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F2A3CD1FB4382D000FFF0B /* DownLoader.m */; };
+		F6259C581FBAC1690010030B /* DownLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F6259C551FBAC1690010030B /* DownLoader.m */; };
+		F6259C591FBAC1690010030B /* FileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F6259C571FBAC1690010030B /* FileTool.m */; };
+		F6259C5F1FBAC9580010030B /* MYCircleBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F6259C5E1FBAC83C0010030B /* MYCircleBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,10 +47,12 @@
 		F610BD581FB2EC7600265E3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F610BD5A1FB2EC7600265E3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F610BD5B1FB2EC7600265E3B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F6F2A3C91FB3F3FA000FFF0B /* FileTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileTool.h; sourceTree = "<group>"; };
-		F6F2A3CA1FB3F3FA000FFF0B /* FileTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileTool.m; sourceTree = "<group>"; };
-		F6F2A3CC1FB4382D000FFF0B /* DownLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownLoader.h; sourceTree = "<group>"; };
-		F6F2A3CD1FB4382D000FFF0B /* DownLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownLoader.m; sourceTree = "<group>"; };
+		F6259C541FBAC1690010030B /* DownLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownLoader.h; sourceTree = "<group>"; };
+		F6259C551FBAC1690010030B /* DownLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownLoader.m; sourceTree = "<group>"; };
+		F6259C561FBAC1690010030B /* FileTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTool.h; sourceTree = "<group>"; };
+		F6259C571FBAC1690010030B /* FileTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTool.m; sourceTree = "<group>"; };
+		F6259C5D1FBAC83C0010030B /* MYCircleBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MYCircleBar.h; sourceTree = "<group>"; };
+		F6259C5E1FBAC83C0010030B /* MYCircleBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MYCircleBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,10 +105,8 @@
 		F610BD4B1FB2EC7600265E3B /* BreakPointDownLoad */ = {
 			isa = PBXGroup;
 			children = (
-				F6F2A3CC1FB4382D000FFF0B /* DownLoader.h */,
-				F6F2A3CD1FB4382D000FFF0B /* DownLoader.m */,
-				F6F2A3C91FB3F3FA000FFF0B /* FileTool.h */,
-				F6F2A3CA1FB3F3FA000FFF0B /* FileTool.m */,
+				F6259C521FBAC1690010030B /* CustomView */,
+				F6259C531FBAC1690010030B /* DownLoadFile */,
 				F610BD4C1FB2EC7600265E3B /* AppDelegate.h */,
 				F610BD4D1FB2EC7600265E3B /* AppDelegate.m */,
 				F610BD4F1FB2EC7600265E3B /* ViewController.h */,
@@ -103,6 +118,26 @@
 				F610BD5B1FB2EC7600265E3B /* main.m */,
 			);
 			path = BreakPointDownLoad;
+			sourceTree = "<group>";
+		};
+		F6259C521FBAC1690010030B /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				F6259C5D1FBAC83C0010030B /* MYCircleBar.h */,
+				F6259C5E1FBAC83C0010030B /* MYCircleBar.m */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		F6259C531FBAC1690010030B /* DownLoadFile */ = {
+			isa = PBXGroup;
+			children = (
+				F6259C541FBAC1690010030B /* DownLoader.h */,
+				F6259C551FBAC1690010030B /* DownLoader.m */,
+				F6259C561FBAC1690010030B /* FileTool.h */,
+				F6259C571FBAC1690010030B /* FileTool.m */,
+			);
+			path = DownLoadFile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +181,10 @@
 							};
 						};
 					};
+					F66D36B81FB99A750000D744 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = F610BD441FB2EC7600265E3B /* Build configuration list for PBXProject "BreakPointDownLoad" */;
@@ -162,6 +201,7 @@
 			projectRoot = "";
 			targets = (
 				F610BD481FB2EC7600265E3B /* BreakPointDownLoad */,
+				F66D36B81FB99A750000D744 /* Regex_appledoc */,
 			);
 		};
 /* End PBXProject section */
@@ -225,6 +265,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BreakPointDownLoad/Pods-BreakPointDownLoad-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F66D36BC1FB99A8E0000D744 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#appledoc Xcode script\n# Start constants\ncompany=\"ACME\";\ncompanyID=\"com.ACME\";\ncompanyURL=\"http://ACME.com\";\ntarget=\"iphoneos\";\n#target=\"macosx\";\noutputPath=\"~/help\";\n# End constants\n/usr/local/bin/appledoc \\\n--project-name \"${PROJECT_NAME}\" \\\n--project-company \"${company}\" \\\n--company-id \"${companyID}\" \\\n--docset-atom-filename \"${company}.atom\" \\\n--docset-feed-url \"${companyURL}/${company}/%DOCSETATOMFILENAME\" \\\n--docset-package-url \"${companyURL}/${company}/%DOCSETPACKAGEFILENAME\" \\\n--docset-fallback-url \"${companyURL}/${company}\" \\\n--output \"${outputPath}\" \\\n--publish-docset \\\n--docset-platform-family \"${target}\" \\\n--logformat xcode \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--exit-threshold 2 \\\n\"${PROJECT_DIR}\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -232,11 +285,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6F2A3CE1FB4382D000FFF0B /* DownLoader.m in Sources */,
+				F6259C5F1FBAC9580010030B /* MYCircleBar.m in Sources */,
+				F6259C591FBAC1690010030B /* FileTool.m in Sources */,
 				F610BD511FB2EC7600265E3B /* ViewController.m in Sources */,
 				F610BD5C1FB2EC7600265E3B /* main.m in Sources */,
+				F6259C581FBAC1690010030B /* DownLoader.m in Sources */,
 				F610BD4E1FB2EC7600265E3B /* AppDelegate.m in Sources */,
-				F6F2A3CB1FB3F3FA000FFF0B /* FileTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +448,22 @@
 			};
 			name = Release;
 		};
+		F66D36B91FB99A750000D744 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F66D36BA1FB99A750000D744 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -411,6 +481,15 @@
 			buildConfigurations = (
 				F610BD601FB2EC7600265E3B /* Debug */,
 				F610BD611FB2EC7600265E3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F66D36BB1FB99A750000D744 /* Build configuration list for PBXAggregateTarget "Regex_appledoc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F66D36B91FB99A750000D744 /* Debug */,
+				F66D36BA1FB99A750000D744 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

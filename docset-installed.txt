@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/manyiwang/Library/Developer/Shared/Documentation/DocSets/com.lvzhenhua.download.DownLoad.docset
+Time: 2017-11-13 09:20:47 +0000
